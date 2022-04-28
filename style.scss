@@ -1,0 +1,28 @@
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+
+  .test{
+    p{
+      font-size:18px;
+      font-weight:bold;
+
+    }
+
+    span{
+      color:aqua;
+    }
+
+    &-inner {
+      p{
+        font-size: 10px;
+        color: blue;
+
+      }
+    }
+  }
+}
