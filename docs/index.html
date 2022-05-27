@@ -1,23 +1,55 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.17e50649.svg" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <script type="module" crossorigin src="/assets/index.42fe4937.js"></script>
-    <link rel="stylesheet" href="/assets/index.2b67c39a.css" />
+    <link rel="stylesheet" href="style.scss" />
+    <script type="module" src="main.js" defer></script>
+    <title>SOHEE</title>
   </head>
+
   <body>
+    <canvas class="webgl"></canvas>
+    <div id="webgl-container"></div>
     <div id="app">
+      <header class="header">
+        <a class="header1">SOHEE</a>
+
+        <nav>
+          <a href="https://www.instagram.com/soh22_archive/" target="_blank"
+            >instagram
+          </a>
+          <b> | </b>
+          <a href="https://www.instagram.com/sooooopill/" target="_blank"
+            >blog</a
+          >
+          <b> | </b>
+          <a href="https://www.instagram.com/sooooopill/" target="_blank"
+            >website</a
+          >
+        </nav>
+      </header>
+
+      <div class="title">title</div>
+
       <div class="test">
-        <p>이것이 나오면 좋겠는데</p>
+        <a>subtitle</a>
         <span>ss</span>
-        <div>
-          class="test-inner"
-          <p>d</p>
-        </div>
+        <div>content</div>
+        <p>content2</p>
       </div>
+
+      <div_content id="content1">
+        <p class="content1-1">
+          <a class="emailtext" href="naver.com">soh22222@snu.ac.kr</a>
+        </p>
+        <p class="content1-2">
+          <a class="emailtext" href="naver.com">soh22222@snu.ac.kr</a>
+        </p>
+      </div_content>
     </div>
+    <script src="js/main.js" type="module" defer></script>
   </body>
 </html>

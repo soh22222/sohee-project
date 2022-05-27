@@ -82,7 +82,7 @@ font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #a8bed5;
+ 
   margin-top: 60px;
   text-align: center;
 
@@ -109,11 +109,14 @@ font-size: 20px;
 
   .test{
     display: flex;
+    text-align: center;
+    align-items: center;
+    flex-wrap: nowrap;
 
     p{
       font-size:500spx;
-      font-weight:bold;
-      flex-direction: row;
+      // font-weight:bold;
+      // flex-direction: row;
 
     }
 
@@ -185,7 +188,7 @@ body {
   overflow: hidden;
   padding-top: 40px;
   height: 100vh;
-  background-image: url('./sky.png');
+  background-image: url('image/sky.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-color: rgba(138, 91, 151, 0.486);
