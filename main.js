@@ -1,9 +1,10 @@
-import "./style.css";
+// import "./style.css";
 import "./style.scss";
 import * as THREE from "three";
 import * as dat from "lil-gui";
 import gsap from "gsap";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { GLTFLoader } from "./GLTFLoader.js";
+//import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 /**
  * Debug
@@ -44,14 +45,17 @@ const material = new THREE.MeshToonMaterial({
 
 // Objects
 const objectsDistance = 4;
-const mesh1 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.4, 16, 60), material);
+const mesh1 = new THREE.Mesh(
+  new THREE.TorusGeometry(0.5, 0.1, 100, 60),
+  material
+);
 const mesh2 = new THREE.Mesh(new THREE.ConeGeometry(1, 2, 32), material);
 const mesh3 = new THREE.Mesh(
   new THREE.TorusKnotGeometry(0.8, 0.35, 100, 16),
   material
 );
 
-mesh1.position.x = 2;
+mesh1.position.x = 0;
 mesh2.position.x = -2;
 mesh3.position.x = 2;
 
@@ -59,11 +63,32 @@ mesh1.position.y = -objectsDistance * 0;
 mesh2.position.y = -objectsDistance * 1;
 mesh3.position.y = -objectsDistance * 2;
 
+/**
+ * Models
+ */
+const gltfLoader = new GLTFLoader();
+
+gltfLoader.load(
+  "/cloud/cloudinwebsite.gltf",
+  (gltf) => {
+    console.log("success");
+    console.log(gltf);
+  },
+  (progress) => {
+    console.log("progress");
+    console.log(progress);
+  },
+  (error) => {
+    console.log("error");
+    console.log(error);
+  }
+);
+
 //cloud
 const loader = new GLTFLoader();
 
 loader.load(
-  "path/to/model.glb",
+  "path/to/cloudinwebsite.glb",
   function (gltf) {
     scene.add(gltf.scene);
   },
