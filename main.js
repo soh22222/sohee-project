@@ -4,7 +4,10 @@ import * as THREE from "three";
 import * as dat from "lil-gui";
 import gsap from "gsap";
 import { GLTFLoader } from "./GLTFLoader.js";
+import { FontLoader } from "./FontLoader.js";
 //import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { OrbitControls } from "./OrbitControls.js";
+//import { TextGeometry } from "TextGeometry.js";
 
 /**
  * Debug
@@ -34,34 +37,40 @@ const scene = new THREE.Scene();
  */
 // Texture
 const textureLoader = new THREE.TextureLoader();
-const gradientTexture = textureLoader.load("textures/gradients/3.jpg");
+const matcapTexture = textureLoader.load("static/textures/matcaps/8.png");
+const gradientTexture = textureLoader.load("static/textures/particles/1.png");
 gradientTexture.magFilter = THREE.NearestFilter;
+const particleTexture = textureLoader.load("static/textures/particles/1.png");
+//particlesMaterial.map = particleTexture;
 
 // Material
 const material = new THREE.MeshToonMaterial({
   color: parameters.materialColor,
-  gradientMap: gradientTexture,
+  gradientMap: particleTexture,
 });
 
 // Objects
 const objectsDistance = 4;
 const mesh1 = new THREE.Mesh(
-  new THREE.TorusGeometry(0.5, 0.1, 100, 60),
+  new THREE.TorusGeometry(4, 0.01, 10, 60),
   material
 );
-const mesh2 = new THREE.Mesh(new THREE.ConeGeometry(1, 2, 32), material);
+const mesh2 = new THREE.Mesh(new THREE.SphereGeometry(0.5, 30, 32), material);
 const mesh3 = new THREE.Mesh(
-  new THREE.TorusKnotGeometry(0.8, 0.35, 100, 16),
+  new THREE.TorusGeometry(2, 0.01, 10, 60),
   material
 );
 
 mesh1.position.x = 0;
-mesh2.position.x = -2;
-mesh3.position.x = 2;
+mesh2.position.x = 0;
+mesh3.position.x = 0;
 
 mesh1.position.y = -objectsDistance * 0;
-mesh2.position.y = -objectsDistance * 1;
-mesh3.position.y = -objectsDistance * 2;
+mesh2.position.y = -objectsDistance * 0.1;
+mesh3.position.y = -objectsDistance * 0.1;
+
+//mesh1.position.z = -0.5;
+//mesh3.position.z = 0.5;
 
 /**
  * Models
@@ -69,7 +78,7 @@ mesh3.position.y = -objectsDistance * 2;
 const gltfLoader = new GLTFLoader();
 
 gltfLoader.load(
-  "/cloud/cloudinwebsite.gltf",
+  "cloud2.gltf",
   (gltf) => {
     console.log("success");
     console.log(gltf);
@@ -88,7 +97,7 @@ gltfLoader.load(
 const loader = new GLTFLoader();
 
 loader.load(
-  "path/to/cloudinwebsite.glb",
+  "/cloud2.gltf",
   function (gltf) {
     scene.add(gltf.scene);
   },
@@ -101,6 +110,33 @@ loader.load(
 scene.add(mesh1, mesh2, mesh3);
 
 const sectionMeshes = [mesh1, mesh2, mesh3];
+
+/**
+ * Fonts
+ */
+const fontLoader = new FontLoader();
+
+fontLoader.load("static/fonts/helvetiker_regular.typeface.json", (font) => {
+  // Material
+  const material = new THREE.MeshMatcapMaterial({ matcap: matcapTexture });
+
+  // Text
+  const textGeometry = new TextBufferGeometry("Hello Three.js", {
+    font: font,
+    size: 0.5,
+    height: 0.2,
+    curveSegments: 12,
+    bevelEnabled: true,
+    bevelThickness: 0.03,
+    bevelSize: 0.02,
+    bevelOffset: 0,
+    bevelSegments: 5,
+  });
+  textGeometry.center();
+
+  const text = new THREE.Mesh(textGeometry, material);
+  scene.add(text);
+});
 
 /**
  * Lights
@@ -168,17 +204,23 @@ window.addEventListener("resize", () => {
  */
 // Group
 const cameraGroup = new THREE.Group();
-scene.add(cameraGroup);
+//scene.add(cameraGroup);
 
 // Base camera
 const camera = new THREE.PerspectiveCamera(
-  35,
+  50,
   sizes.width / sizes.height,
   0.1,
   100
 );
-camera.position.z = 6;
-cameraGroup.add(camera);
+camera.position.y = -2;
+camera.position.z = 10;
+//cameraGroup.add(camera);
+scene.add(camera);
+
+// Controls
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
 
 /**
  * Renderer
@@ -236,19 +278,19 @@ const tick = () => {
   const deltaTime = elapsedTime - previousTime;
   previousTime = elapsedTime;
 
-  // Animate camera
-  camera.position.y = (-scrollY / sizes.height) * objectsDistance;
+  // // Animate camera
+  // camera.position.y = (-scrollY / sizes.height) * objectsDistance;
 
-  const parallaxX = cursor.x * 0.5;
-  const parallaxY = -cursor.y * 0.5;
-  cameraGroup.position.x +=
-    (parallaxX - cameraGroup.position.x) * 5 * deltaTime;
-  cameraGroup.position.y +=
-    (parallaxY - cameraGroup.position.y) * 5 * deltaTime;
+  // const parallaxX = cursor.x * 0.5;
+  // const parallaxY = -cursor.y * 0.5;
+  // cameraGroup.position.x +=
+  //   (parallaxX - cameraGroup.position.x) * 5 * deltaTime;
+  // cameraGroup.position.y +=
+  //   (parallaxY - cameraGroup.position.y) * 5 * deltaTime;
 
   // Animate meshes
   for (const mesh of sectionMeshes) {
-    mesh.rotation.x += deltaTime * 0.1;
+    mesh.rotation.x += deltaTime * -0.5;
     mesh.rotation.y += deltaTime * 0.12;
   }
 
@@ -258,5 +300,12 @@ const tick = () => {
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
 };
+
+// const clock = new THREE.Clock();
+
+// const tick = () => {
+//   // Update controls
+//   controls.update();
+// };
 
 tick();
