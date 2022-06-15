@@ -4,7 +4,30 @@
 }
 
 body {
-  margin: 0;
+
+  //background-color: rgba(138, 91, 151, 0.486);
+}
+
+
+// html, body {
+//   margin: 10;
+//   padding: 10;
+//   height: 100%;
+// }
+
+// #body-wrapper {
+//   min-height: 100%;
+//   position: relative;
+// }
+
+// #body-content {
+//   margin-top: 1000px;
+//   padding-bottom: 100px; /* footer의 높이 */
+// }
+
+
+body {
+  //margin: 0;
   //padding: 0;
   background-color: rgb(58, 58, 58, 0.2);
   font-family: "ALS Wagon",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
@@ -12,13 +35,12 @@ body {
   font-weight: 400;
   color: #212529;
   line-height: 1.4;
-  margin: 0;
   min-height: 100vh;
   min-height: -webkit-fill-available;
   overflow-y: scroll;
   text-align: left;
   overflow: hidden;
-  padding-top: 40px;
+  padding-top: 80px;
   height: 100vh;
   background-image: url('image/sky.png');
   background-repeat: no-repeat;
@@ -41,21 +63,82 @@ body {
   font-weight: 500;
   text-transform: uppercase;
 }
+list {
+  width: 100%;
+  height: 500px;
+  border: 1px solid #003458;
+}
 
-.left{
+main {
+  padding: 1rem;
+  align-items: center;
+  //display: flex;
+  
+}
+
+
+.left {
+  //padding: 1rem;
+ 
+  width: 30%;
+  float: left;
+  box-sizing: border-box;
+  background: #ffffff27;
   justify-content: space-around;
+}
+
+.right {
+  width: 30%;
+  float: right;
+  box-sizing: border-box;
+  background: #ffffff27;
+  justify-content: space-around;
+}
+
+p{
+  //text-align: left;
+  color : white;
+  font-size:30px;
+  // font-weight:bold;
+  // flex-direction: row;
 
 }
+
+p:hover,
+p:active {
+  text-decoration: none;
+  color: rgba(81, 78, 255, 0.733);
+}
+
+a {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  outline: none ; 
+  //line-height: 100px;
+  text-align: center;
+  
+}
+
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: rgba(81, 78, 255, 0.733);
+}
+
 
 .header{
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-font-size: 15px;
-font-weight: 1000;
+
   height: 10px;
   padding: 1rem;
+  font-size: 15px;
+font-weight: 1000;
   color: rgb(255, 255, 255);
   //background: rgba(0, 0, 0, 0.131);
   font-weight: normal;
@@ -63,6 +146,22 @@ font-weight: 1000;
   justify-content: space-between;
   align-items: center;
   filter: blur(radius);
+}
+
+footer {
+  position: fixed;
+  width: 100%;
+height: 40px;
+  position: absolute;  
+  bottom: 0;
+  left: 0;
+ padding: 5px 0px 5px;
+//  display: flex;
+
+  vertical-align: middle; 
+
+
+	//background: blue;
 }
 
 .section {
@@ -120,22 +219,10 @@ font-weight: 1000;
   text-transform: uppercase;
 }
 
-  .test{
-    display: flex;
-    text-align: center;
-    align-items: center;
-    flex-wrap: nowrap;
+  
 
-    p{
-      font-size:500spx;
-      // font-weight:bold;
-      // flex-direction: row;
+    
 
-    }
-
-    span{
-      color:aqua;
-    }
 
     &-inner {
       p{
@@ -144,7 +231,7 @@ font-weight: 1000;
 
       }
     }
-  }
+  
 }
 
 
@@ -155,19 +242,7 @@ input {
   
 }
 
-a {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  outline: none ; 
-  font-weight :500
-}
 
-
-a:hover,
-a:active {
-  text-decoration: none;
-  color: rgba(81, 78, 255, 0.733);
-}
 
 #text1 {
   font-size: 20px
@@ -198,51 +273,6 @@ a:active {
   padding-bottom: 100%;
 }
 
-body {
-
-  //background-color: rgba(138, 91, 151, 0.486);
-}
-
-
-
-// .footer{
-//   height: 10px;
-//   position : relative;
-//   transform : translateY(-100%);
-
-//   padding-top: 50px;
-//   padding-bottom: 10px;
-//   background-color: black;
-//   line-height: 100px;/*글자나 이미지 위치 정렬*/
-//   color:white;
-  
-// }
-
-/* footer 하단 고정 [S] */
-html, body {
-  margin: 10;
-  padding: 10;
-  height: 100%;
-}
-
-#body-wrapper {
-  min-height: 100%;
-  position: relative;
-}
-
-#body-content {
-  margin-top: 1000px;
-  padding-bottom: 100px; /* footer의 높이 */
-}
-
-footer {
-  width: 100%;
-  height: 100px; 
-  position: absolute;  
-  bottom: 0;
-  left: 0;
-}
-/* footer 하단 고정 [E] */
 
 
 

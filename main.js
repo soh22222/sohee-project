@@ -94,9 +94,9 @@ gltfLoader.load(
 );
 
 //cloud
-const loader = new GLTFLoader();
+const cloud = new GLTFLoader();
 
-loader.load(
+cloud.load(
   "/cloud2.gltf",
   function (gltf) {
     scene.add(gltf.scene);
