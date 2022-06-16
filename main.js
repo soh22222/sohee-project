@@ -78,9 +78,9 @@ mesh2.position.x = 0;
 mesh3.position.x = 0;
 mesh4.position.x = 0;
 
-mesh1.position.y = -objectsDistance * 0;
-mesh2.position.y = -objectsDistance * 0.1;
-mesh3.position.y = -objectsDistance * 0.1;
+mesh1.position.y = -objectsDistance * 0.1;
+mesh2.position.y = -objectsDistance * 0.2;
+mesh3.position.y = -objectsDistance * 0.2;
 mesh4.position.y = -objectsDistance * 0.1;
 
 //mesh1.position.z = -0.5;
@@ -227,7 +227,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.y = -2;
+camera.position.y = 0;
 camera.position.z = 10;
 camera.rotation.x = Math.PI / 2;
 //cameraGroup.add(camera);
@@ -293,15 +293,15 @@ const tick = () => {
   const deltaTime = elapsedTime - previousTime;
   previousTime = elapsedTime;
 
-  // // Animate camera
-  // camera.position.y = (-scrollY / sizes.height) * objectsDistance;
+  // Animate camera
+  camera.position.y = (-scrollY / sizes.height) * objectsDistance;
 
-  // const parallaxX = cursor.x * 0.5;
-  // const parallaxY = -cursor.y * 0.5;
-  // cameraGroup.position.x +=
-  //   (parallaxX - cameraGroup.position.x) * 5 * deltaTime;
-  // cameraGroup.position.y +=
-  //   (parallaxY - cameraGroup.position.y) * 5 * deltaTime;
+  const parallaxX = cursor.x * 0.5;
+  const parallaxY = -cursor.y * 0.5;
+  cameraGroup.position.x +=
+    (parallaxX - cameraGroup.position.x) * 5 * deltaTime;
+  cameraGroup.position.y +=
+    (parallaxY - cameraGroup.position.y) * 5 * deltaTime;
 
   // Animate meshes
   for (const mesh of sectionMeshes) {
