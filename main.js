@@ -110,19 +110,19 @@ gltfLoader.load(
 //cloud
 const cloud = new GLTFLoader();
 
-cloud.load(
-  "/cloud2.gltf",
-  function (gltf) {
-    scene.add(gltf.scene);
-  },
-  undefined,
-  function (error) {
-    console.error(error);
-  }
-);
+// cloud.load(
+//   "/cloud2.gltf",
+//   function (gltf) {
+//     scene.add(gltf.scene);
+//   },
+//   undefined,
+//   function (error) {
+//     console.error(error);
+//   }
+// );
 
 scene.add(mesh1, mesh2, mesh3);
-
+scene.add(cloud);
 const sectionMeshes = [mesh1, mesh2, mesh3];
 
 /**
@@ -227,8 +227,8 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.y = 0;
-camera.position.z = 10;
+camera.position.y = -0.4;
+camera.position.z = 7;
 camera.rotation.x = Math.PI / 2;
 //cameraGroup.add(camera);
 scene.add(camera);
@@ -306,8 +306,14 @@ const tick = () => {
   // Animate meshes
   for (const mesh of sectionMeshes) {
     mesh.rotation.x += deltaTime * -0.5;
-    mesh.rotation.y += deltaTime * 0.12;
+    mesh.rotation.y += deltaTime * -0.12;
+    mesh.rotation.z += deltaTime * -0.12;
   }
+
+  // Animate particle
+
+  //particles.rotation.x += deltaTime * 0.5;
+  particles.rotation.y += deltaTime * 0.07;
 
   // Render
   renderer.render(scene, camera);
