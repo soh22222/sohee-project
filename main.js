@@ -44,7 +44,15 @@ const particleTexture = textureLoader.load("static/textures/particles/1.png");
 //particlesMaterial.map = particleTexture;
 
 // Material
-const material = new THREE.MeshToonMaterial({
+const material = new THREE.MeshBasicMaterial({
+  color: parameters.materialColor,
+  gradientMap: particleTexture,
+});
+const material2 = new THREE.MeshNormalMaterial({
+  color: parameters.materialColor,
+  gradientMap: particleTexture,
+});
+const material3 = new THREE.MeshStandardMaterial({
   color: parameters.materialColor,
   gradientMap: particleTexture,
 });
@@ -55,7 +63,7 @@ const mesh1 = new THREE.Mesh(
   new THREE.TorusGeometry(4, 0.01, 10, 60),
   material
 );
-const mesh2 = new THREE.Mesh(new THREE.SphereGeometry(0.5, 30, 32), material);
+const mesh2 = new THREE.Mesh(new THREE.SphereGeometry(0.5, 30, 32), material2);
 const mesh3 = new THREE.Mesh(
   new THREE.TorusGeometry(2, 0.01, 10, 60),
   material
@@ -141,7 +149,7 @@ fontLoader.load("static/fonts/helvetiker_regular.typeface.json", (font) => {
 /**
  * Lights
  */
-const directionalLight = new THREE.DirectionalLight("#ffffff", 1);
+const directionalLight = new THREE.DirectionalLight("#ffffff", 100);
 directionalLight.position.set(1, 1, 0);
 scene.add(directionalLight);
 
@@ -215,6 +223,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.y = -2;
 camera.position.z = 10;
+camera.rotation.x = Math.PI / 2;
 //cameraGroup.add(camera);
 scene.add(camera);
 
