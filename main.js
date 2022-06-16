@@ -60,22 +60,28 @@ const material3 = new THREE.MeshStandardMaterial({
 // Objects
 const objectsDistance = 4;
 const mesh1 = new THREE.Mesh(
-  new THREE.TorusGeometry(4, 0.01, 10, 60),
+  new THREE.TorusGeometry(8, 0.01, 30, 100),
   material
 );
 const mesh2 = new THREE.Mesh(new THREE.SphereGeometry(0.5, 30, 32), material2);
 const mesh3 = new THREE.Mesh(
-  new THREE.TorusGeometry(2, 0.01, 10, 60),
+  new THREE.TorusGeometry(2, 0.01, 30, 100),
+  material
+);
+const mesh4 = new THREE.Mesh(
+  new THREE.TorusGeometry(4, 0.01, 30, 100),
   material
 );
 
 mesh1.position.x = 0;
 mesh2.position.x = 0;
 mesh3.position.x = 0;
+mesh4.position.x = 0;
 
 mesh1.position.y = -objectsDistance * 0;
 mesh2.position.y = -objectsDistance * 0.1;
 mesh3.position.y = -objectsDistance * 0.1;
+mesh4.position.y = -objectsDistance * 0.1;
 
 //mesh1.position.z = -0.5;
 //mesh3.position.z = 0.5;
