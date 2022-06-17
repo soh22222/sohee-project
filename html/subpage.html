@@ -3,18 +3,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Painting</title>
   </head>
 
-  <body>
+  <body
+  oncontextmenu="return false"
+    ondragstart="return false"
+    onselectstart="return false"
+  >
     <canvas class="webgl"></canvas>
     <div id="webgl-container"></div>
     <div id="app">
       <header class="header">
-        <a class="header1">SOHEE</a>
+        <a href="../index.html"  class="header1">SOHEE</a>
 
         <nav>
           <a href="https://www.instagram.com/soh22_archive/" target="_blank"
@@ -56,6 +60,6 @@
         <p class="content1-1"></p>
       </div_content>
     </div>
-    <script src="./main.js" type="module"></script>
+    <script src="/js/subpage.js" type="module"></script>
   </body>
 </html>
