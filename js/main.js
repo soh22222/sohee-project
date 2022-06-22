@@ -1,5 +1,5 @@
 // import "./style.css";
-import "/css/style.scss";
+import "../style.scss";
 import * as THREE from "three";
 import * as dat from "lil-gui";
 import gsap from "gsap";

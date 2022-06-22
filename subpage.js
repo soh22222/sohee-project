@@ -1,12 +1,12 @@
-import "../css/subpage.css";
-import "../css/style.scss";
+import "./subpage.css";
+import "./style.scss";
 import * as THREE from "three";
 import * as dat from "lil-gui";
 import gsap from "gsap";
-import { GLTFLoader } from "../GLTFLoader.js";
-import { FontLoader } from "../FontLoader.js";
+import { GLTFLoader } from "./GLTFLoader.js";
+import { FontLoader } from "./FontLoader.js";
 //import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { OrbitControls } from "../OrbitControls.js";
+import { OrbitControls } from "./OrbitControls.js";
 //import { TextGeometry } from "TextGeometry.js";
 
 /**
