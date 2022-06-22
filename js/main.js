@@ -40,7 +40,7 @@ const textureLoader = new THREE.TextureLoader();
 const matcapTexture = textureLoader.load("static/textures/matcaps/8.png");
 const gradientTexture = textureLoader.load("static/textures/particles/1.png");
 gradientTexture.magFilter = THREE.NearestFilter;
-const particleTexture = textureLoader.load("static/textures/particles/1.png");
+const particleTexture = textureLoader.load("static/textures/particles/2.png");
 //particlesMaterial.map = particleTexture;
 
 // Material
@@ -50,7 +50,7 @@ const material = new THREE.MeshBasicMaterial({
 });
 const material2 = new THREE.MeshNormalMaterial({
   color: parameters.materialColor,
-  gradientMap: particleTexture,
+  gradientMap: gradientTexture,
 });
 const material3 = new THREE.MeshStandardMaterial({
   color: parameters.materialColor,
@@ -182,7 +182,7 @@ particlesGeometry.setAttribute(
 
 // Material
 const particlesMaterial = new THREE.PointsMaterial({
-  color: parameters.materialColor,
+  //color: parameters.materialColor,
   sizeAttenuation: textureLoader,
   size: 0.03,
 });
