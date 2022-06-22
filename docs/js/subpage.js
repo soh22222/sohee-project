@@ -1,4 +1,4 @@
-// import "./style.css";
+import "../css/subpage.css";
 import "../css/style.scss";
 import * as THREE from "three";
 import * as dat from "lil-gui";
@@ -18,10 +18,6 @@ const parameters = {
   materialColor: "#ffeded",
 };
 
-gui.addColor(parameters, "materialColor").onChange(() => {
-  material.color.set(parameters.materialColor);
-  particlesMaterial.color.set(parameters.materialColor);
-});
 
 /**
  * Base
@@ -89,68 +85,10 @@ mesh4.position.y = -objectsDistance * 0.1;
 /**
  * Models
  */
-const gltfLoader = new GLTFLoader();
 
-gltfLoader.load(
-  "../cloud2.gltf",
-  (gltf) => {
-    console.log("success");
-    console.log(gltf);
-  },
-  (progress) => {
-    console.log("progress");
-    console.log(progress);
-  },
-  (error) => {
-    console.log("error");
-    console.log(error);
-  }
-);
-
-//cloud
-const cloud = new GLTFLoader();
-
-// cloud.load(
-//   "/cloud2.gltf",
-//   function (gltf) {
-//     scene.add(gltf.scene);
-//   },
-//   undefined,
-//   function (error) {
-//     console.error(error);
-//   }
-// );
-
-//scene.add(mesh1, mesh2, mesh3);
-//scene.add(cloud);
 const sectionMeshes = [mesh1, mesh2, mesh3];
 
-/**
- * Fonts
- */
-const fontLoader = new FontLoader();
-
-fontLoader.load("../static/fonts/helvetiker_regular.typeface.json", (font) => {
-  // Material
-  const material = new THREE.MeshMatcapMaterial({ matcap: matcapTexture });
-
-  // Text
-  // const textGeometry = new TextBufferGeometry("Hello Three.js", {
-  //   font: font,
-  //   size: 0.5,
-  //   height: 0.2,
-  //   curveSegments: 12,
-  //   bevelEnabled: true,
-  //   bevelThickness: 0.03,
-  //   bevelSize: 0.02,
-  //   bevelOffset: 0,
-  //   bevelSegments: 5,
-  // });
-  // textGeometry.center();
-
-  // const text = new THREE.Mesh(textGeometry, material);
-  // scene.add(text);
-});
+ 
 
 /**
  * Lights
@@ -189,7 +127,7 @@ const particlesMaterial = new THREE.PointsMaterial({
 
 // Points
 const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-scene.add(particles);
+//scene.add(particles);
 
 /**
  * Sizes
@@ -247,40 +185,6 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-/**
- * Scroll
- */
-let scrollY = window.scrollY;
-let currentSection = 0;
-
-window.addEventListener("scroll", () => {
-  scrollY = window.scrollY;
-  const newSection = Math.round(scrollY / sizes.height);
-
-  if (newSection != currentSection) {
-    currentSection = newSection;
-
-    gsap.to(sectionMeshes[currentSection].rotation, {
-      duration: 1.5,
-      ease: "power2.inOut",
-      x: "+=6",
-      y: "+=3",
-      z: "+=1.5",
-    });
-  }
-});
-
-/**
- * Cursor
- */
-const cursor = {};
-cursor.x = 0;
-cursor.y = 0;
-
-window.addEventListener("mousemove", (event) => {
-  cursor.x = event.clientX / sizes.width - 0.5;
-  cursor.y = event.clientY / sizes.height - 0.5;
-});
 
 /**
  * Animate
@@ -293,22 +197,6 @@ const tick = () => {
   const deltaTime = elapsedTime - previousTime;
   previousTime = elapsedTime;
 
-  // Animate camera
-  camera.position.y = (-scrollY / sizes.height) * objectsDistance;
-
-  const parallaxX = cursor.x * 0.5;
-  const parallaxY = -cursor.y * 0.5;
-  cameraGroup.position.x +=
-    (parallaxX - cameraGroup.position.x) * 5 * deltaTime;
-  cameraGroup.position.y +=
-    (parallaxY - cameraGroup.position.y) * 5 * deltaTime;
-
-  // Animate meshes
-  for (const mesh of sectionMeshes) {
-    mesh.rotation.x += deltaTime * -0.5;
-    mesh.rotation.y += deltaTime * -0.12;
-    mesh.rotation.z += deltaTime * -0.12;
-  }
 
   // Animate particle
 
@@ -322,11 +210,5 @@ const tick = () => {
   window.requestAnimationFrame(tick);
 };
 
-// const clock = new THREE.Clock();
-
-// const tick = () => {
-//   // Update controls
-//   controls.update();
-// };
 
 tick();
