@@ -250,25 +250,25 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 /**
  * Scroll
  */
-let scrollY = window.scrollY;
-let currentSection = 0;
+// let scrollY = window.scrollY;
+// let currentSection = 0;
 
-window.addEventListener("scroll", () => {
-  scrollY = window.scrollY;
-  const newSection = Math.round(scrollY / sizes.height);
+// window.addEventListener("scroll", () => {
+//   scrollY = window.scrollY;
+//   const newSection = Math.round(scrollY / sizes.height);
 
-  if (newSection != currentSection) {
-    currentSection = newSection;
+//   if (newSection != currentSection) {
+//     currentSection = newSection;
 
-    gsap.to(sectionMeshes[currentSection].rotation, {
-      duration: 1.5,
-      ease: "power2.inOut",
-      x: "+=6",
-      y: "+=3",
-      z: "+=1.5",
-    });
-  }
-});
+//     gsap.to(sectionMeshes[currentSection].rotation, {
+//       duration: 1.5,
+//       ease: "power2.inOut",
+//       x: "+=6",
+//       y: "+=3",
+//       z: "+=1.5",
+//     });
+//   }
+// });
 
 /**
  * Cursor
@@ -293,22 +293,6 @@ const tick = () => {
   const deltaTime = elapsedTime - previousTime;
   previousTime = elapsedTime;
 
-  // Animate camera
-  camera.position.y = (-scrollY / sizes.height) * objectsDistance;
-
-  const parallaxX = cursor.x * 0.5;
-  const parallaxY = -cursor.y * 0.5;
-  cameraGroup.position.x +=
-    (parallaxX - cameraGroup.position.x) * 5 * deltaTime;
-  cameraGroup.position.y +=
-    (parallaxY - cameraGroup.position.y) * 5 * deltaTime;
-
-  // Animate meshes
-  for (const mesh of sectionMeshes) {
-    mesh.rotation.x += deltaTime * -0.5;
-    mesh.rotation.y += deltaTime * -0.12;
-    mesh.rotation.z += deltaTime * -0.12;
-  }
 
   // Animate particle
 
