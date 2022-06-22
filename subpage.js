@@ -1,5 +1,5 @@
-import "./subpage.css";
-import "./style.scss";
+import "../subpage.css";
+import "../style.scss";
 import * as THREE from "three";
 import * as dat from "lil-gui";
 import gsap from "gsap";
