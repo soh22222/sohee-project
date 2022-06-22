@@ -1,4 +1,4 @@
-import "../subpage.css";
+// import "../subpage.css";
 import "../style.scss";
 import * as THREE from "three";
 import * as dat from "lil-gui";

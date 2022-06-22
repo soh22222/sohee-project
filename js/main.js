@@ -1,4 +1,4 @@
-// import "./style.css";
+// import "../style.css";
 import "../style.scss";
 import * as THREE from "three";
 import * as dat from "lil-gui";
@@ -89,23 +89,23 @@ mesh4.position.y = -objectsDistance * 0.1;
 /**
  * Models
  */
-const gltfLoader = new GLTFLoader();
+// const gltfLoader = new GLTFLoader();
 
-gltfLoader.load(
-  "cloud2.gltf",
-  (gltf) => {
-    console.log("success");
-    console.log(gltf);
-  },
-  (progress) => {
-    console.log("progress");
-    console.log(progress);
-  },
-  (error) => {
-    console.log("error");
-    console.log(error);
-  }
-);
+// gltfLoader.load(
+//   "cloud2.gltf",
+//   (gltf) => {
+//     console.log("success");
+//     console.log(gltf);
+//   },
+//   (progress) => {
+//     console.log("progress");
+//     console.log(progress);
+//   },
+//   (error) => {
+//     console.log("error");
+//     console.log(error);
+//   }
+// );
 
 //cloud
 const cloud = new GLTFLoader();
